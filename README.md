@@ -94,7 +94,9 @@ service GreetService {
 
 ## Benchmark
 
-- Required
+- Requirement
+    - use Elastic Container Service (Internal Communication)
+    - AWS RDS (MYSQL)
 
 - RESTful API
 

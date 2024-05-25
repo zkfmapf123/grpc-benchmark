@@ -9,7 +9,7 @@
 - RESTFulAPI의 Request/Response의 Data 직렬화 모델 같은 것
 - JSON과 유사하다고 생각하면 편할 듯
 
-```json
+```sh
 ## RestFulAPI Reqest / Response
 
 POST /user

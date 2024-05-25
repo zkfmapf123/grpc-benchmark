@@ -53,6 +53,45 @@ service UserService {
 
 ![2](./public/2.png)    
 
+### PRotocol Buffer Types
+
+- Unary
+    - RestAPI와 유사한 동작방식
+
+![3](./public/3.png)
+
+- Server Streaming
+    - Client:Server의 통신기준 1:N 형식으로 통신
+
+![4](./public/4.png)
+
+- Client Streaming
+    - Client:Server의 통신기준 N:1 형식으로 통신
+
+![5](./public/5.png)
+
+- BI Directional Streaming
+    - N:M 통신
+
+![6](./public/6.png)
+
+```
+service GreetService {
+
+    // Unary
+    rpc Greet(GreetRequest) returns (GreetResponse) {};
+
+    // Server Streaming
+    rpc GreetManyTimes(GreetRequest) returns (stream GreetResonse) {};
+
+    // Client Streaming
+    rpc LongGreet(stream GreetRequest) returns (GreetResponse) {};
+
+    // Bi directional Streaming
+    rpc GreetEveryOne(stream GreetRequest) returns (stream GreetResponse) {};
+}
+```
+
 ## Benchmark
 
 - Required

@@ -1,17 +1,32 @@
 version: "3.8"
 
 services:
-  db:
-    image: mysql:latest
-    container_name: mysql-container
+  ## http
+  http-pub:
+    build:
+      context: ./server-pub
+      dockerfile: http.Dockerfile
     environment:
-      MYSQL_DATABASE: Users
-      MYSQL_ROOT_PASSWORD: 12341234
+      PORT: 3000
+      SUB_HOST: "172.27.0.3:3001"
     ports:
-      - "3306:3306"
-    volumes:
-      - mysql_data:/var/lib/mysql
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - "3000:3000"
+    networks:
+      - test-nw
+  http-sub:
+    build:
+      context: ./server-sub
+      dockerfile: http.Dockerfile
+    environment:
+      PORT: 3001
+    ports:
+      - "3001:3001"
+    networks:
+      - test-nw
 
-volumes:
-  mysql_data:
+  ## grpc
+
+  ## eda
+
+networks:
+  test-nw:
